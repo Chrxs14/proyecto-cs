@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <title>Detalles del Usuario</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="../static/css/user-details.css" th:href="@{/css/user-details.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Detalles del Usuario</h1>
+
+    <div class="user-info">
+        <h3>Información del Usuario:</h3>
+        <p><strong>ID:</strong> <span th:text="${user.id}"></span></p>
+        <p><strong>Nombre:</strong> <span th:text="${user.name}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+        <p><strong>Contraseña:</strong> <span th:text="${user.password}"></span></p>
+        <p><strong>Rol:</strong> <span th:text="${user.role.name}"></span></p>
+        <p><strong>Fecha de Creación:</strong> <span th:text="${user.createdAt}"></span></p>
+        <p><strong>Última Actualización:</strong> <span th:text="${user.updatedAt}"></span></p>
+    </div>
+
+    <div class="action-buttons">
+        <a th:href="@{/users/form(id=${user.id})}" class="button edit-button">Editar Usuario</a>
+        <a th:href="@{/users/delete/{id}(id=${user.id})}" class="button delete-button" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">Eliminar Usuario</a>
+    </div>
+
+    <div class="back-link">
+        <a href="/users">Volver a la lista de usuarios</a>
+    </div>
+</div>
+</body>
+</html>

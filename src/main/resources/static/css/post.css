@@ -1,0 +1,220 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    box-sizing: border-box; /* Garantiza que el box-sizing se aplique a todos los elementos */
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit; /* Aplica box-sizing a todos los elementos */
+}
+
+header {
+    background-color: #007BFF;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+/* Form Section */
+.post-form {
+    max-width: 600px;
+    margin: 2rem auto;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Asegura que el padding no exceda el ancho */
+}
+
+.post-form textarea,
+.post-form select {
+    width: 100%; /* Ajusta el ancho de los campos al contenedor */
+    padding: 1rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    resize: none; /* Desactiva el redimensionamiento del textarea */
+    box-sizing: border-box; /* Evita desbordamientos */
+}
+
+.post-form textarea.error,
+.post-form select.error {
+    border-color: #D32F2F;
+}
+
+.post-form button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Botón ocupa todo el ancho del formulario */
+}
+
+.post-form button:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: #D32F2F;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.alert {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 1rem;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+/* Feed Section */
+.feed {
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.post {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    box-sizing: border-box; /* Evita que el padding provoque desbordamiento */
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.post-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.post-header span {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.post p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.post-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.post-actions span {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.post-actions form {
+    display: flex;
+    align-items: center;
+}
+
+.post-actions input[type="text"] {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+    box-sizing: border-box; /* Previene que el padding provoque desbordamiento */
+}
+
+.post-actions button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.post-actions button:hover {
+    background-color: #0056b3;
+}
+
+.comments {
+    margin-top: 1rem;
+    border-top: 1px solid #ddd;
+    padding-top: 1rem;
+}
+
+.comment {
+    margin-bottom: 0.5rem;
+}
+
+.comment strong {
+    color: #333;
+}
+
+.comment span {
+    color: #555;
+}
+/* Botones de Acción */
+.action-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Elimina subrayado en enlaces */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem; /* Asegura consistencia en altura */
+}
+
+.action-button:hover {
+    background-color: #0056b3;
+}
+
+/* Entrada de Comentario */
+.comment-input {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+    height: 2.5rem; /* Alinea con los botones */
+}
+
+/* Botón Ver Detalle */
+.detail-button {
+    margin-left: 0.5rem; /* Espaciado entre el botón de comentar y detalle */
+}
+

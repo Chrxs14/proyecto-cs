@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+        <title>Error</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="../static/css/error.css" th:href="@{/css/error.css}" >
+    </head>
+    <body>
+    <div class="error-container">
+        <h1>¡Ups! Algo salió mal.</h1>
+        <p th:text="${errorMessage}">Error: No se pudo procesar la solicitud.</p>
+        <a href="/">Volver al inicio</a>
+    </div>
+    </body>
+</html>

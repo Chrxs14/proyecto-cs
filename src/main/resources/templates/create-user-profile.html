@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Perfil</title>
+    <link rel="stylesheet" href="../static/css/create-profile.css" th:href="@{/css/create-profile.css}">
+</head>
+<body>
+<div class="card">
+    <h1>Crear Nuevo Perfil</h1>
+    <form action="/user-profiles/create" method="post">
+        <label for="bio">Biografía</label>
+        <input type="text" id="bio" name="profile.bio" placeholder="Escribe tu biografía aquí..." required>
+        <button type="submit">Crear</button>
+    </form>
+    <div class="footer">
+        <p><a href="/">Volver a la página principal</a></p>
+    </div>
+</div>
+
+</body>
+</html>

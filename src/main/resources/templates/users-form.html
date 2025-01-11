@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <title>Formulario de Usuario</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="../static/css/users-form.css" th:href="@{/css/users-form.css}">
+</head>
+<body>
+<div class="container">
+    <h1 th:text="${user.id == null ? 'Nuevo Usuario' : 'Editar Usuario'}"></h1>
+    <form th:action="@{/users}" th:object="${user}" method="post" class="user-form">
+        <input type="hidden" th:field="*{id}"/>
+
+        <div class="form-group">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" th:field="*{name}" />
+            <div class="error-message" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Correo:</label>
+            <input type="email" id="email" th:field="*{email}" />
+            <div class="error-message" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" th:field="*{password}" />
+            <div class="error-message" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+        </div>
+
+        <button type="submit" class="btn">Guardar</button>
+    </form>
+    <a href="/users" class="back-link">Volver a la lista de usuarios</a>
+</div>
+</body>
+</html>

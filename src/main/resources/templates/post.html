@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Feed</title>
+    <link rel="stylesheet" href="../static/css/post.css" th:href="@{/css/post.css}">
+</head>
+<body>
+<header>
+    <h1>Post Feed</h1>
+</header>
+<section>
+    <form th:action="@{/posts}" th:method="post" class="post-form">
+        <div th:if="${error}" class="alert">
+            <strong>Error!</strong> <span th:text="${error}"></span>
+        </div>
+        <textarea name="content" placeholder="¿Qué estás pensando?" required th:text="${postDTO?.content}" th:classappend="${error != null ? 'error' : ''}"></textarea>
+        <div th:if="${error != null}" class="error-message">El contenido es obligatorio</div>
+        <div>
+            <label for="postType">Tipo de publicación:</label>
+            <select name="postType" id="postType" th:classappend="${error != null ? 'error' : ''}">
+                <th:block th:each="type : ${postType}">
+                    <option th:value="${type.id}" th:text="${type.name}" th:selected="${postDTO?.postType?.id == type.id}"></option>
+                </th:block>
+            </select>
+            <div th:if="${error != null}" class="error-message">El tipo de publicación es obligatorio</div>
+        </div>
+        <button type="submit">Publicar</button>
+    </form>
+</section>
+<hr/>
+<section class="feed">
+    <div th:each="post : ${posts}" class="post">
+        <div class="post-header">
+            <h3 th:text="${post.user.name}"></h3>
+            <span th:text="${post.createdAt}"></span>
+        </div>
+        <p th:text="${post.content}"></p>
+        <div class="post-actions">
+            <span th:text="'Me gusta: ' + ${post.likes}"></span>
+            <form th:action="@{/posts/like/{id}(id=${post.id})}" method="post">
+                <input type="hidden" name="userId" th:value="${session.userId}"/>
+                <button type="submit" class="action-button">Me gusta</button>
+            </form>
+            <form th:action="@{/posts/comment/{id}(id=${post.id})}" method="post">
+                <input type="hidden" name="userId" th:value="${session.userId}"/>
+                <input type="text" name="content" placeholder="Escribe un comentario..." class="comment-input">
+                <button type="submit" class="action-button">Comentar</button>
+            </form>
+            <!-- Botón Ver Detalle -->
+            <a th:href="@{/posts/{id}(id=${post.id})}" class="action-button detail-button">Ver Detalle</a>
+        </div>
+        <div class="comments" th:if="${post.comments}">
+            <div th:each="comment : ${post.comments}" class="comment">
+                <p>
+                    <strong th:text="${comment.user.name}"></strong>:
+                    <span th:text="${comment.content}"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

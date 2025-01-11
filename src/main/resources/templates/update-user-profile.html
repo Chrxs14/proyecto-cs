@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualizar Perfil</title>
+    <link rel="stylesheet" href="../static/css/update-profile.css" th:href="@{/css/update-profile.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Actualizar Perfil</h1>
+    <form action="/user-profiles/update/${userProfile.profile.id}" method="post" class="update-form">
+        <label for="bio">Biografía:</label>
+        <input type="text" id="bio" name="profile.bio" th:value="${userProfile.profile.bio}" required>
+        <!-- Más campos según sea necesario -->
+        <button type="submit">Actualizar</button>
+    </form>
+</div>
+</body>
+</html>

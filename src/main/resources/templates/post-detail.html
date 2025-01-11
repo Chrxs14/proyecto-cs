@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Post Details</title>
+    <link rel="stylesheet" href="../static/css/post-detail.css" th:href="@{/css/post-detail.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Post Details</h1>
+    <div class="details">
+        <p><strong>ID:</strong> <span th:text="${post.id}"></span></p>
+        <p><strong>User Name:</strong> <span th:text="${post.user.name}"></span></p>
+        <p><strong>Content:</strong> <span th:text="${post.content}"></span></p>
+        <p><strong>Likes:</strong> <span th:text="${post.likes}"></span></p>
+        <p><strong>Created At:</strong> <span th:text="${post.createdAt}"></span></p>
+        <p><strong>Updated At:</strong> <span th:text="${post.updateAt}"></span></p>
+    </div>
+
+    <!-- Botones de acciones solo visibles para el propietario del post -->
+    <div class="actions" th:if="${isOwner}">
+        <a th:href="@{/posts/edit/{id}(id=${post.id})}" class="edit-button">Edit Post</a>
+        <a th:href="@{/posts/delete/{id}(id=${post.id})}" class="delete-button" onclick="return confirm('Are you sure you want to delete this post?')">Delete Post</a>
+    </div>
+
+    <a th:href="@{/posts}" class="back-link">Back to Posts</a>
+</div>
+</body>
+</html>

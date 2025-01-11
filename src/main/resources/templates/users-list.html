@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <title>Lista de Usuarios</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="../static/css/users-list.css" th:href="@{/css/users-list.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Lista de Usuarios</h1>
+    <table class="user-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.email}"></td>
+            <td>
+                <a th:href="@{/user-profiles/{id}/details(id=${user.id})}" class="action-button view-button">Ver</a>
+                <a th:href="@{/users/delete/{id}(id=${user.id})}" class="action-button delete-button" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="actions">
+        <a href="/users/form" class="create-button">Crear nuevo usuario</a>
+        <a href="/" class="back-button">Volver al menú principal</a>
+    </div>
+</div>
+</body>
+</html>
